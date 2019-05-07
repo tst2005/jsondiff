@@ -1,0 +1,33 @@
+#!/bin/bash
+
+. ./lib/jq_stack.lib.sh
+. ./lib/jq_run.lib.sh
+
+. ./lib/jq.hide_last_array_index.lib.sh
+. ./lib/jq.json2flat.lib.sh
+. ./lib/jq.json2ndjson.lib.sh
+. ./lib/jq.ndjson2json.lib.sh
+. ./lib/jq.sortallarrays.lib.sh
+
+. ./lib/jsondiff.lib.sh
+
+#jsondiff() {
+#	local f1="$1" f2="$2";shift 2
+#	jq_run json2flat hide_last_array_index sortallarrays json2ndjson < "$f1"
+#	jq_run json2flat hide_last_array_index sortallarrays json2ndjson < "$f2"
+#}
+
+#jq_run json2flat < "$1"
+#jq_run json2flat hide_last_array_index < "$1"
+#jq_run json2flat hide_last_array_index sortallarrays < "$1"
+#jq_run json2flat hide_last_array_index sortallarrays json2ndjson < "$1"
+
+#jsondiff() {
+#	local f1="$1" f2="$2";shift 2
+#	diff -u "$@" \
+#		<(jq_run json2flat hide_last_array_index sortallarrays json2ndjson < "$f1") \
+#		<(jq_run json2flat hide_last_array_index sortallarrays json2ndjson < "$f2") \
+#	| diff_txt2json
+#}
+
+jsondiff "$@"
