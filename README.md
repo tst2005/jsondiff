@@ -50,3 +50,32 @@ A jsondiff tool.
 ["+", {".State":"ElseWhere"}]
 ```
 
+# WIP
+
+
+```json
+["+", {".People[]":"Carla"}]
+["-", {".State":"MA"}]
+["+", {".State":"ElseWhere"}]
+```
+
+```bash
+jq -s -c 'map( .[1] |= ((to_entries|(map(.key, .value)))  )|flatten(1) ) |.[]'
+```
+
+```json
+["+",".People[]","Carla"]
+["-",".State","MA"]
+["+",".State","ElseWhere"]
+```
+
+```bash
+jq -s -c -r 'map( (.[1]|sub("^\\.";"")) + ("") + (" "*(15 - (.[1]|length)))+ "" + .[0] + " " + .[2]) |.[]'
+```
+
+```text
+People[]      + Carla
+State         - MA
+State         + ElseWhere
+```
+
