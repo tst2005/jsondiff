@@ -2,8 +2,8 @@
 
 basedir="$(dirname "$0")/.."
 
-. "$basedir/lib/jq_stack.lib.sh"
-. "$basedir/lib/jq_run.lib.sh"
+. "$basedir/deps/jq-helpers/lib/jq_stack.lib.sh"
+. "$basedir/deps/jq-helpers/lib/jq_run.lib.sh"
 
 . "$basedir/lib/jq.hide_last_array_index.lib.sh"
 . "$basedir/lib/jq.json2flat.lib.sh"

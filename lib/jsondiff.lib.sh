@@ -17,6 +17,10 @@ diff_txt2json() {
 #jq_run jq_cmd_ json2flat hide_last_array_index sortallarrays json2ndjson < "$1"
 
 jsondiff() {
+	if [ $# -lt 2 ]; then
+		echo >&2 "Missing argument"
+		return 1
+	fi
 	local f1="$1" f2="$2";shift 2
 	diff -u "$@" \
 		<(jq_run json2flat hide_last_array_index sortallarrays json2ndjson < "$f1") \
