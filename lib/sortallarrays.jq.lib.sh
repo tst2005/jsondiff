@@ -20,3 +20,7 @@ jq_cmd_sortallarrays() {
 	jq_stack function "$jq_function_sortallarrays"
 	jq_stack call sortallarrays
 }
+jq_cmd2_sortallarrays() {
+	jq_stack2 function "$jq_function_sortallarrays" named sortallarrays
+	jq_stack2 call sortallarrays
+}
