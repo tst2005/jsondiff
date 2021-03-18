@@ -1,7 +1,7 @@
 
 jq_function_json2flat='
 	def json2flat:
-		.|reduce ( tostream|select(length==2) ) as $i ( {}; .[ $i[0]|map(
+		reduce ( tostream|select(length==2) ) as $i ( {}; .[ $i[0]|map(
 			if type=="number" then
 				"[" + tostring + "]"
 			elif (tostring|test("^[a-zA-Z0-9_]*$")) then
