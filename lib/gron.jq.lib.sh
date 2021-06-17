@@ -13,3 +13,8 @@ jq_cmd_gron() {
 	jq_stack function "$jq_function_gron"
 	jq_stack call gron
 }
+jq_cmd2_gron() {
+	jq_stack2 option -r
+	jq_stack2 function "$jq_function_gron"
+	jq_stack2 call gron
+}
