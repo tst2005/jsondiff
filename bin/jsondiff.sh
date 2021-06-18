@@ -28,7 +28,7 @@ json_flat_sorted() {
 	;
 	def sortallarrays:
 		walk(if type == "array" and length > 1 then sort else . end)
-	;json2flat|hide_last_array_index|sortallarrays|.[]'
+	;json2flat|hide_last_array_index|sortallarrays|if type=="array" then .[] else . end'
 }
 
 diff_txt2json() {
