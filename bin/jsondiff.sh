@@ -18,8 +18,7 @@ jq '-S' '-c' 'def json2flat:
 	| map( [.key, .value] )
 	| map_values( {"key": .[0], "value": .[1] } )
 	| map([.]|from_entries)
-;# Apply f to composite entities recursively, and to atoms
-def walk(f):
+;def walk(f):
 	. as $in
 	| if type == "object" then
 		reduce keys[] as $key
