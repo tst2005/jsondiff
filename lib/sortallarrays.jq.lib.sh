@@ -24,3 +24,6 @@ jq_cmd2_sortallarrays() {
 	jq_stack2 function "$jq_function_sortallarrays" named sortallarrays
 	jq_stack2 call sortallarrays
 }
+jq_cmd3_sortallarrays() {
+	jq_stack3 modcall sortallarrays
+}

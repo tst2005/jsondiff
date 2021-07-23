@@ -2,8 +2,9 @@
 
 basedir="$(readlink -f "$(dirname "$0")")/.."
 
-. "$basedir/deps/jq-helpers/lib/jq_stack2.lib.sh"
-. "$basedir/deps/jq-helpers/lib/jq_run2.lib.sh"
+#export JQ_STACK3_MODDIR="$basedir/lib"
+. "$basedir/deps/jq-helpers/lib/jq_stack3.lib.sh"
+. "$basedir/deps/jq-helpers/lib/jq_run3.lib.sh"
 
 . "$basedir/lib/hide_last_array_index.jq.lib.sh"
 . "$basedir/lib/json2flat.jq.lib.sh"
@@ -20,7 +21,7 @@ echo ''
 echo 'json_flat_sorted() {'
 
 echo '	jq '"$(
-		jq_gen2 json2flat hide_last_array_index sortallarrays json2ndjson|
+		jq_gen3 json2flat hide_last_array_index sortallarrays json2ndjson|
 		sed -e 's,^,\t,g' -e '1s,^\t,,g'
 	)"
 echo '}'

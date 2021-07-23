@@ -24,3 +24,6 @@ jq_cmd2_json2flat() {
 	jq_stack2 function "$jq_function_json2flat" named json2flat
 	jq_stack2 call json2flat
 }
+jq_cmd3_json2flat() {
+	jq_stack3 option -S modcall json2flat
+}

@@ -8,3 +8,6 @@ jq_cmd2_json2ndjson() {
 	jq_stack2 option -cM
 	jq_stack2 call 'if type=="array" then .[] else . end'
 }
+jq_cmd3_json2ndjson() {
+	jq_stack3 option -cM call 'if type=="array" then .[] else . end'
+}
