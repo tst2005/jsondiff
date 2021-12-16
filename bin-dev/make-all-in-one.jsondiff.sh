@@ -20,7 +20,7 @@ echo '#!/bin/bash'
 echo ''
 echo 'json_flat_sorted() {'
 
-echo '	jq '"$(
+echo '	jq $1 '"$(
 		jq_gen3 json2flat hide_last_array_index sortallarrays json2ndjson|
 		sed -e 's,^,\t,g' -e '1s,^\t,,g'
 	)"
