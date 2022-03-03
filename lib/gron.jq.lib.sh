@@ -1,6 +1,7 @@
 
 # alternative to gron : https://github.com/tomnomnom/gron
 
+jq_option_gron='-r'
 jq_function_gron='
 	def gron:
 		to_entries| map( "\(.key) = \(.value|tojson);" )|.[]
