@@ -1,4 +1,5 @@
 
+jq_option_sortallarrays='-c'
 jq_function_sortallarrays='
 	# Apply f to composite entities recursively, and to atoms
 	def walk(f):
@@ -26,4 +27,7 @@ jq_cmd2_sortallarrays() {
 }
 jq_cmd3_sortallarrays() {
 	jq_stack3 modcall sortallarrays
+}
+jq_cmd4_sortallarrays() {
+	${self:-jq_stack4} :modcall sortallarrays
 }

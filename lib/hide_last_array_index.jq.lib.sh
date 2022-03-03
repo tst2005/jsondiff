@@ -1,4 +1,5 @@
 
+jq_option_hide_last_array_index=''
 jq_function_hide_last_array_index='
 	def hide_last_array_index:
 		to_entries
@@ -20,4 +21,7 @@ jq_cmd2_hide_last_array_index() {
 }
 jq_cmd3_hide_last_array_index() {
 	jq_stack3 modcall hide_last_array_index
+}
+jq_cmd4_hide_last_array_index() {
+	${self:-jq_stack4} :modcall hide_last_array_index
 }

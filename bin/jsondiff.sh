@@ -1,7 +1,7 @@
 #!/bin/bash
 
 json_flat_sorted() {
-	jq $1 -S -cM 'def json2flat:
+	jq $1 -S -c -M 'def json2flat:
 		reduce ( tostream|select(length==2) ) as $i ( {}; .[ $i[0]|map(
 			if type=="number" then
 				"[" + tostring + "]"
@@ -28,7 +28,7 @@ json_flat_sorted() {
 	;
 	def sortallarrays:
 		walk(if type == "array" and length > 1 then sort else . end)
-	;json2flat|hide_last_array_index|sortallarrays|if type=="array" then .[] else . end'
+	;def json2ndjson: if type=="array" then .[] else . end;json2flat|hide_last_array_index|sortallarrays|json2ndjson'
 }
 
 diff_txt2json() {

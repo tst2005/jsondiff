@@ -1,4 +1,5 @@
 
+jq_option_json2flat='-S'
 jq_function_json2flat='
 	def json2flat:
 		reduce ( tostream|select(length==2) ) as $i ( {}; .[ $i[0]|map(
@@ -26,4 +27,7 @@ jq_cmd2_json2flat() {
 }
 jq_cmd3_json2flat() {
 	jq_stack3 option -S modcall json2flat
+}
+jq_cmd4_json2flat() {
+	${self:-jq_stack4} :modcall json2flat
 }
