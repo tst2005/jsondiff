@@ -1,6 +1,6 @@
 #!/bin/sh
 
-jq -S -cM -r 'def json2flat:
+jq -ScMr 'def json2flat:
 	reduce ( tostream|select(length==2) ) as $i ( {}; .[ $i[0]|map(
 		if type=="number" then
 			"[" + tostring + "]"
@@ -27,6 +27,6 @@ jq -S -cM -r 'def json2flat:
 ;
 def sortallarrays:
 	walk(if type == "array" and length > 1 then sort else . end)
-;def gron:
+;def json2ndjson: if type=="array" then .[] else . end;def gron:
 	to_entries| map( "\(.key) = \(.value|tojson);" )|.[]
-;json2flat|hide_last_array_index|sortallarrays|if type=="array" then .[] else . end|gron'
+;json2flat|hide_last_array_index|sortallarrays|json2ndjson|gron'
