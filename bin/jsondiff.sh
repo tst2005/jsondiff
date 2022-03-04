@@ -1,7 +1,7 @@
 #!/bin/bash
 
 json_flat_sorted() {
-	jq $1 -S -c -M 'def json2flat:
+	jq $1 -ScM 'def json2flat:
 		reduce ( tostream|select(length==2) ) as $i ( {}; .[ $i[0]|map(
 			if type=="number" then
 				"[" + tostring + "]"
